@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HRVEstimation.MainPage">
+
+    <ContentPage Title="Усі пацієнти">
+        <ScrollView>
+            <StackLayout>
+                <CollectionView x:Name="myCollectionView" SelectionMode="Single" Margin="20,5,20,0" SelectionChanged="OnCollectionViewSelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Id}" Grid.Row="0" Grid.Column="0" 
+                       FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+
+                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                                    <Label Text="{Binding FullName}" 
+                           HorizontalOptions="Start" VerticalOptions="Center" 
+                           FontSize="20" FontAttributes="Bold" />
+                                    <Label Text="{Binding DateOfAppointment}" 
+                           HorizontalOptions="Start" VerticalOptions="Center" />
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+
+
+    <ContentPage Title="Додати пацієнта">
+        <ScrollView>
+            <StackLayout Padding="20">
+
+
+
+                <Label Text="Номер мед. карти" FontSize="Medium" />
+                <Entry x:Name="medicalCardNumberEntry" Placeholder="Введіть номер мед. карти" />
+
+                <Label Text="ФИО" FontSize="Medium" />
+                <Entry x:Name="fullNameEntry" Placeholder="Введите ФИО" />
+
+                <Label Text="Дата народження" FontSize="Medium" />
+                <Entry x:Name="dateOfBirthEntry" Placeholder="Введіть дату народження" />
+
+                <Label Text="Відділення" FontSize="Medium" />
+                <Entry x:Name="departmentEntry" Placeholder="Введіть відділення" />
+                
+                <Label Text="Оцінка ВСР" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Entry x:Name="inputDataEntry" Placeholder="Введіть данні" Margin="0,10,0,10"/>
+                
+                <Button Text="OK" Clicked="Button_Clicked" Margin="0,10,0,0"/>
+                <Grid x:Name="resultsGrid" Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Mean RR Interval:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="meanRRLabel" Grid.Row="0" Grid.Column="1" />
+
+                    <Label Text="SDNN:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="sdnnLabel" Grid.Row="1" Grid.Column="1" />
+
+                    <Label Text="SDSD:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="sdsdLabel" Grid.Row="2" Grid.Column="1" />
+
+                    <Label Text="RMSSD:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="rmssdLabel" Grid.Row="3" Grid.Column="1" />
+
+                    <Label Text="PNN50:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="pnn50Label" Grid.Row="4" Grid.Column="1" />
+
+                    <Label Text="PNN20:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="pnn20Label" Grid.Row="5" Grid.Column="1" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+
+</TabbedPage>
